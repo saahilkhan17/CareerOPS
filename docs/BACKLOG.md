@@ -4,7 +4,7 @@
 - [ ] pgvector embedding signal for match scoring (MAT-8, P2 → deferred to v2,
   decided 2026-10-12: needs pgvector extension + embedding provider, out of scope)
 - [ ] Reminder-due notification hook (TRK-7, P2)
-- [ ] Dashboard frontend (post-v1)
+- [x] Dashboard frontend (built 2026-10-12 as vanilla HTML/CSS/JS in `dashboard/`)
 - [ ] Multi-user demo seed vs single demo user (PRD §15 Q4 — decide in Phase 6)
 - [ ] Third jobs-API source choice: RemoteOK vs Adzuna (PRD §15 Q1 — decide in Phase 4)
 - [ ] LLM provider + monthly cost cap for MAT-7 (PRD §15 Q2 — decide in Phase 3)

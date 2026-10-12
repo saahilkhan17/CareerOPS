@@ -139,3 +139,12 @@ message text. Status: accepted.
   (caught by a live 422 while capturing README examples).
 Status: accepted.
 
+## ADR-0015: vanilla dashboard, no backend changes (2026-10-12)
+
+Dashboard built on explicit request (was a PRD non-goal): plain
+HTML/CSS/JS in `dashboard/`, no framework, no build step, no new backend
+dependencies — CORS already allowed :3000, so zero API changes were needed.
+Every server string renders escaped (XSS); endpoint coverage verified by
+contract review against the routers plus `node --check` (`make lint-js`).
+Status: accepted.
+

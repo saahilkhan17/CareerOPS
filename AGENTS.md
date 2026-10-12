@@ -27,6 +27,7 @@ Docker Compose is used ONLY to run local Postgres and Redis (dev convenience).
         router.py  schemas.py  service.py  repository.py  models.py
     workers/     # celery app + tasks
   tests/         # mirrors app/ structure
+  dashboard/     # vanilla HTML/CSS/JS frontend (no framework, no build step)
   alembic/
   docker-compose.yml  # local Postgres + Redis only
   Makefile  README.md
@@ -55,6 +56,7 @@ Docker Compose is used ONLY to run local Postgres and Redis (dev convenience).
 - `make worker` — celery worker; `make beat` — celery beat
 - `make test` — pytest with coverage
 - `make lint` — ruff check + ruff format --check + mypy
+- `make lint-js` — syntax check the dashboard JS
 - `make migrate` — alembic upgrade head
 - `make revision m="msg"` — new alembic revision
 

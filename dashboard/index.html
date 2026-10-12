@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CareerOps Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>CareerOps</h1>
+      <span class="tagline">track · score · measure</span>
+    </div>
+    <div class="topbar-right">
+      <label class="api-base">API
+        <input id="api-base" type="url" spellcheck="false" />
+      </label>
+      <span id="user-email" class="user-email" hidden></span>
+      <button id="logout-btn" class="btn ghost" hidden>Log out</button>
+    </div>
+  </header>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <!-- Auth view -->
+  <main id="auth-view" class="wrap">
+    <section class="card auth-card">
+      <h2>Log in</h2>
+      <form id="login-form" class="form">
+        <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+        <label>Password <input name="password" type="password" required minlength="8" autocomplete="current-password" /></label>
+        <button class="btn primary" type="submit">Log in</button>
+      </form>
+    </section>
+    <section class="card auth-card">
+      <h2>Register</h2>
+      <form id="register-form" class="form">
+        <label>Email <input name="email" type="email" required autocomplete="email" /></label>
+        <label>Password <input name="password" type="password" required minlength="8" maxlength="72" autocomplete="new-password" /></label>
+        <button class="btn" type="submit">Create account</button>
+      </form>
+      <p class="hint">Demo account (after <code>make seed</code>): <code>demo@careerops.dev</code> / <code>demo1234</code></p>
+    </section>
+  </main>
+
+  <!-- App view -->
+  <main id="app-view" class="wrap" hidden>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="apps" role="tab">Applications</button>
+      <button class="tab" data-tab="match" role="tab">Match</button>
+      <button class="tab" data-tab="listings" role="tab">Listings</button>
+      <button class="tab" data-tab="analytics" role="tab">Analytics</button>
+    </nav>
+
+    <!-- Applications -->
+    <section id="tab-apps" class="tabpanel">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Applications <span id="apps-total" class="muted"></span></h2>
+          <form id="apps-filters" class="filters">
+            <select name="status" aria-label="Status filter">
+              <option value="">All statuses</option>
+              <option value="saved">Saved</option>
+              <option value="applied">Applied</option>
+              <option value="oa">OA</option>
+              <option value="interview">Interview</option>
+              <option value="offer">Offer</option>
+              <option value="rejected">Rejected</option>
+              <option value="withdrawn">Withdrawn</option>
+            </select>
+            <input name="company" placeholder="Company" />
+            <input name="q" placeholder="Search title, company, notes" />
+            <select name="sort_by" aria-label="Sort by">
+              <option value="created_at">Newest</option>
+              <option value="applied_at">Applied date</option>
+              <option value="title">Title</option>
+            </select>
+            <button class="btn" type="submit">Apply</button>
+            <button class="btn ghost" type="button" id="apps-export">CSV</button>
+          </form>
+          <table class="table" id="apps-table">
+            <thead><tr><th>Title</th><th>Company</th><th>Status</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="pager">
+            <button class="btn ghost" id="apps-prev" type="button">← Prev</button>
+            <span id="apps-page" class="muted"></span>
+            <button class="btn ghost" id="apps-next" type="button">Next →</button>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h2>New application</h2>
+            <form id="app-create" class="form">
+              <label>Company <input name="company" required maxlength="320" /></label>
+              <label>Title <input name="title" required maxlength="320" /></label>
+              <div class="row">
+                <label>Location <input name="location" maxlength="320" /></label>
+                <label>Source <input name="source" maxlength="120" /></label>
+              </div>
+              <label>URL <input name="url" type="url" maxlength="2000" /></label>
+              <button class="btn primary" type="submit">Create</button>
+            </form>
+          </div>
+          <div class="card" id="app-detail" hidden>
+            <h2 id="detail-title"></h2>
+            <p class="muted" id="detail-meta"></p>
+            <div class="row">
+              <label>Status
+                <select id="detail-status">
+                  <option value="saved">Saved</option>
+                  <option value="applied">Applied</option>
+                  <option value="oa">OA</option>
+                  <option value="interview">Interview</option>
+                  <option value="offer">Offer</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="withdrawn">Withdrawn</option>
+                </select>
+              </label>
+              <button class="btn" id="detail-save-status" type="button">Move</button>
+              <button class="btn danger" id="detail-delete" type="button">Delete</button>
+            </div>
+            <h3>History</h3>
+            <ul id="detail-history" class="list"></ul>
+            <h3>Notes</h3>
+            <ul id="detail-notes" class="list"></ul>
+            <form id="note-add" class="row">
+              <input name="body" placeholder="Add a note" required maxlength="5000" />
+              <button class="btn" type="submit">Add</button>
+            </form>
+            <h3>Reminders</h3>
+            <ul id="detail-reminders" class="list"></ul>
+            <form id="reminder-add" class="row">
+              <input name="due_at" type="datetime-local" required />
+              <button class="btn" type="submit">Remind me</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Match -->
+    <section id="tab-match" class="tabpanel" hidden>
+      <div class="grid-2">
+        <div class="card">
+          <h2>My profile</h2>
+          <form id="profile-form" class="form">
+            <div id="skill-rows"></div>
+            <button class="btn ghost" type="button" id="skill-add">+ Add skill</button>
+            <label>Target roles (comma-separated)
+              <input name="target_roles" placeholder="Backend Engineer, Platform Engineer" />
+            </label>
+            <label>Education <input name="education" /></label>
+            <button class="btn primary" type="submit">Save profile</button>
+          </form>
+        </div>
+        <div class="card">
+          <h2>Score a job description</h2>
+          <form id="match-form" class="form">
+            <label>Title (optional) <input name="title" maxlength="320" /></label>
+            <label>Paste the JD
+              <textarea name="text" rows="10" required placeholder="Requirements:&#10;- 3 years of Python and FastAPI…"></textarea>
+            </label>
+            <button class="btn primary" type="submit">Score</button>
+          </form>
+          <div id="match-result"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Match history</h2>
+        <ul id="match-history" class="list"></ul>
+      </div>
+    </section>
+
+    <!-- Listings -->
+    <section id="tab-listings" class="tabpanel" hidden>
+      <div class="card">
+        <h2>Listings <span id="listings-total" class="muted"></span></h2>
+        <form id="listings-filters" class="filters">
+          <input name="q" placeholder="Search" />
+          <input name="company" placeholder="Company" />
+          <select name="source" aria-label="Source filter">
+            <option value="">All sources</option>
+            <option value="greenhouse">Greenhouse</option>
+            <option value="lever">Lever</option>
+            <option value="remoteok">RemoteOK</option>
+            <option value="import">Import</option>
+            <option value="seed-demo">Seed</option>
+          </select>
+          <select name="remote" aria-label="Remote filter">
+            <option value="">On-site or remote</option>
+            <option value="true">Remote only</option>
+            <option value="false">On-site only</option>
+          </select>
+          <input name="min_score" type="number" min="0" max="100" placeholder="Min score" />
+          <button class="btn" type="submit">Apply</button>
+        </form>
+        <table class="table" id="listings-table">
+          <thead><tr><th>Title</th><th>Company</th><th>Source</th><th>Score</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pager">
+          <button class="btn ghost" id="listings-prev" type="button">← Prev</button>
+          <span id="listings-page" class="muted"></span>
+          <button class="btn ghost" id="listings-next" type="button">Next →</button>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card" id="listing-detail" hidden>
+          <h2 id="listing-title"></h2>
+          <p class="muted" id="listing-meta"></p>
+          <div id="listing-skills" class="chips"></div>
+          <p id="listing-desc" class="pre"></p>
+        </div>
+        <div class="card">
+          <h2>Import listings</h2>
+          <form id="import-form" class="form">
+            <label>Format
+              <select name="format">
+                <option value="json">JSON records</option>
+                <option value="csv">CSV text</option>
+              </select>
+            </label>
+            <label>Payload
+              <textarea name="payload" rows="6" required
+                placeholder='JSON: [{"title": "Dev", "company": "Acme"}]  |  CSV: title,company'></textarea>
+            </label>
+            <button class="btn primary" type="submit">Import</button>
+          </form>
+          <p class="muted" id="import-result"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics -->
+    <section id="tab-analytics" class="tabpanel" hidden>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Top skills</h2>
+          <form id="top-form" class="filters">
+            <input name="role" placeholder="Role filter" />
+            <input name="location" placeholder="Location filter" />
+            <input name="days" type="number" min="0" max="365" value="30" title="Days back (0 = all time)" />
+            <button class="btn" type="submit">Go</button>
+          </form>
+          <div id="top-skills"></div>
+        </div>
+        <div class="card">
+          <h2>My skill gap</h2>
+          <p class="muted">In-demand skills missing from your profile.</p>
+          <div id="my-gap"></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Salary bands</h2>
+          <form id="salary-form" class="filters">
+            <input name="role" placeholder="Role filter" />
+            <input name="location" placeholder="Location filter" />
+            <button class="btn" type="submit">Go</button>
+          </form>
+          <div id="salary-stats" class="stat-grid"></div>
+        </div>
+        <div class="card">
+          <h2>Posting trends</h2>
+          <form id="trends-form" class="filters">
+            <select name="granularity">
+              <option value="week">Weekly</option>
+              <option value="day">Daily</option>
+              <option value="month">Monthly</option>
+            </select>
+            <button class="btn" type="submit">Go</button>
+          </form>
+          <div id="trends-chart" class="bars"></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Skills appearing with…</h2>
+        <form id="cooc-form" class="row">
+          <input name="skill" placeholder="e.g. Python" required />
+          <button class="btn" type="submit">Go</button>
+        </form>
+        <div id="cooc-result" class="chips"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

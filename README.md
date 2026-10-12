@@ -181,6 +181,22 @@ PostgreSQL 16, Redis, Celery + Beat, JWT, Pytest + pytest-asyncio + httpx +
 respx, Ruff, mypy (strict), uv. Docker Compose runs local Postgres + Redis
 only.
 
+## Dashboard (vanilla HTML/CSS/JS)
+
+`dashboard/` is a dependency-free single-page frontend covering the whole API:
+auth, applications (filters, status moves, notes, reminders, history, CSV
+export), profile + JD scoring with breakdown, listings (filters, min-score,
+import), and all five analytics views.
+
+```bash
+make run                                    # API on :8000
+python -m http.server 3000 --directory dashboard   # UI on :3000
+```
+
+Open http://localhost:3000, point the API field at your server
+(default `http://localhost:8000`), log in with the demo user. Verify JS with
+`make lint-js` (`node --check`).
+
 ## Testing and coverage
 
 - 166 tests, 98.4% coverage (gate: 80%). `make lint test` must pass before

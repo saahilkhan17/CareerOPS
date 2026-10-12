@@ -26,6 +26,9 @@ beat:
 test:
 	pytest
 
+lint-js:
+	node --check dashboard/app.js
+
 lint:
 	ruff check app tests alembic
 	ruff format --check app tests alembic
