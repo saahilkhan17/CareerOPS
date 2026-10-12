@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 2: Auth + Tracker (ready to plan)
+**Current focus:** Phase 3: JD Match Scoring (ready to plan)
 
 ## Current Position
 
-Phase: 2 of 6 (Auth + Tracker)
+Phase: 3 of 6 (JD Match Scoring)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-10-12 — Phase 1 built+verified (6 tests, 88.7% cov, ruff+mypy clean)
+Last activity: 2026-10-12 — Phase 2 built+verified (70 tests, 97.7% cov, ruff+mypy clean)
 
-Progress: [█░░░░░░░░░] 8%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
+- Total plans completed: 3
 - Average duration: -
 - Total execution time: -
 
@@ -46,6 +46,8 @@ Recent decisions affecting current work:
 - [Ingest]: Inline classification/synthesis (subagent model unavailable)
 - [Phase 1]: Stdlib JSON logging; lint scoped to app/tests/alembic; setuptools
   packages.find restricted to app* (flat-layout discovery fix)
+- [Phase 2]: bcrypt+JWT+opaque-refresh auth; strict state machine (13 edges);
+  coverage greenlet concurrency; sqlite/StaticPool tests; naive-UTC clock
 
 ### Pending Todos
 
@@ -68,5 +70,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Phase 1 complete and committed; Phase 2 ready to plan
+Stopped at: Phase 2 complete and committed; Phase 3 ready to plan
 Resume file: None

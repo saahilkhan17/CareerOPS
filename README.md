@@ -23,8 +23,8 @@ make lint       # ruff check + format --check + mypy
 | Area | Endpoints | Phase |
 |---|---|---|
 | Ops | `GET /health`, `GET /ready` | 1 ✅ |
-| Auth | `POST /auth/register, /login, /refresh, /logout` | 2 |
-| Tracker | CRUD `/applications`, status, notes, reminders, CSV export | 2 |
+| Auth | `POST /auth/register, /login, /refresh, /logout`, `GET /me`, `POST/GET/DELETE /auth/api-keys` | 2 ✅ |
+| Tracker | CRUD `/applications`, `POST /{id}/status`, notes, reminders, `GET /reminders/due`, `GET /export.csv` | 2 ✅ |
 | Match | `POST /match`, `POST /match/{application_id}` | 3 |
 | Listings | `GET /listings`, import, ingestion runs | 4 |
 | Analytics | skills, salary, trends, my-gap | 5 |

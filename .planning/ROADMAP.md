@@ -41,10 +41,11 @@ Plans:
   2. User can CRUD applications and move them through the state machine; illegal moves get 409
   3. Every status change has a StatusHistory row written in the same transaction
   4. Filtered/sorted/paginated list, CSV export, reminders all work with tests
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD at plan time
+- [x] 02-01: Auth module (built 2026-10-12: register/login/refresh/logout/me/API keys)
+- [x] 02-02: Tracker module (built 2026-10-12: CRUD, machine, history, notes, reminders, CSV, 0002 migration)
 
 ### Phase 3: JD Match Scoring (PRD Phase 2)
 **Goal**: Pasted or linked JDs return a deterministic score with a breakdown a user can act on.
@@ -107,7 +108,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Bootstrap | 1/1 | Complete | 2026-10-12 |
-| 2. Auth + Tracker | 0/TBD | Not started | - |
+| 2. Auth + Tracker | 2/2 | Complete | 2026-10-12 |
 | 3. JD Match Scoring | 0/TBD | Not started | - |
 | 4. Ingestion Workers | 0/TBD | Not started | - |
 | 5. Analytics + Hardening | 0/TBD | Not started | - |

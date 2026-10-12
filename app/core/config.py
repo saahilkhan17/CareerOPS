@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     database_url: str = "postgresql+asyncpg://careerops:careerops@localhost:5432/careerops"
     redis_url: str = "redis://localhost:6379/0"
+    auth_secret_key: str | None = None
 
 
 @lru_cache

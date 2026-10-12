@@ -39,3 +39,30 @@ dependency; revisit if structured-context needs grow (Phase 5). Status: accepted
 `.harness/` are pre-existing process tooling with their own Taskfile lint and
 older style (they fail current ruff rules); touching them is out of scope and
 AGENTS.md says ask before changing unrelated files. Status: accepted.
+
+## ADR-0006: coverage needs greenlet concurrency for async SQLAlchemy (2026-10-12)
+
+With plain coverage settings, every line after the first DB `await` in a
+coroutine reported as missed (suite showed 79% while all tests passed).
+`[tool.coverage.run] concurrency = ["greenlet", "thread"]` restored true
+numbers (97.7%). Caveat: the greenlet tracer still misreports 2 early-return
+lines in `auth_secret()` (28-29) — proven executed by a passing equality
+assertion, so this is a measurement artifact, not dead code. Status: accepted.
+
+## ADR-0007: strict terminal states, no reapply edges (2026-10-12)
+
+rejected/withdrawn have no outgoing edges; same-status moves 409. Rationale:
+matches the PRD's linear diagram and keeps the machine auditable; reapply
+(rejected→applied) is real but deferred — reopen via BACKLOG if wanted.
+Pure `validate_transition()` holds the map; tests pin the edge count (13).
+Status: accepted.
+
+## ADR-0008: sqlite-for-tests, naive-UTC clock, Annotated dependencies (2026-10-12)
+
+No Docker on this machine, so integration tests run on aiosqlite (dev-only
+dep) with `StaticPool` over `:memory:`; PG-only paths (live migrate, native
+UUID) are hand-written in the migration and re-verified when Docker exists.
+All timestamps naive UTC via `utcnow()` (consistent on sqlite and on PG
+`timestamptz` with UTC server TZ). Route signatures use
+`Annotated[X, Depends(...)]` (B008-clean, modern FastAPI style). Status: accepted.
+
