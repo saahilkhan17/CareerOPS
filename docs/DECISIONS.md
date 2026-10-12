@@ -81,3 +81,20 @@ exact on all 20). LLM explanation lives behind `match_llm_enabled` + the
 MAT-8 (pgvector) deferred to v2 — no vector infra in this phase's scope.
 Status: accepted.
 
+## ADR-0010: RemoteOK as third ingestion source (2026-10-12)
+
+PRD §15 Q1 decided: RemoteOK over Adzuna — Adzuna needs signup credentials
+(bad for local dev, fixtures, demo); RemoteOK serves public JSON with no auth.
+Revisit if its terms/API change. Greenhouse board→company and Lever
+slug→company come from settings maps (their public APIs carry no company
+name); empty maps are legal (tasks record zero-fetch runs).
+
+## ADR-0011: Celery tested without a broker (2026-10-12)
+
+No Redis here, so tasks are thin sync wrappers over async services that take
+an explicit session factory; the suite drives services directly on sqlite and
+asserts task/beat wiring (names, autoretry, schedule) on the Celery app
+object. respx mocks all HTTP; unit tests pin retry/backoff/throttle behavior
+(including the fix that 4xx from raise_for_status must NOT enter the retry
+loop). Live worker/beat verification needs Redis (compose ships it).
+

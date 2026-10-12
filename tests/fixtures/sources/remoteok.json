@@ -1,0 +1,27 @@
+[
+  {
+    "id": "101",
+    "position": "Python Developer",
+    "company": "Acme",
+    "location": "",
+    "description": "<p>Python and <b>Django</b> role.</p>",
+    "url": "https://remoteok.com/remote-jobs/101",
+    "date": "2026-09-25T08:00:00+00:00",
+    "epoch": 1790323200,
+    "salary_min": 120000,
+    "salary_max": 160000,
+    "tags": ["python"]
+  },
+  {
+    "slug": "legal-notice-without-position-or-id"
+  },
+  "a-non-dict-item",
+  {
+    "id": "102",
+    "position": "DevOps Engineer",
+    "company": "Globex",
+    "description": "Kubernetes and Terraform.",
+    "url": "https://remoteok.com/remote-jobs/102",
+    "epoch": 1758700000
+  }
+]

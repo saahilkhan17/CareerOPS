@@ -70,10 +70,11 @@ Plans:
   1. Beat-scheduled run completes with an IngestionRun record; zero duplicate listings
   2. Retries/backoff, per-source rate limits, and idempotency proven with mocked HTTP
   3. Listing endpoints + CSV/JSON import + min_score filter all work
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD at plan time
+- [x] 04-01: Adapters + pipeline + Celery (built 2026-10-12: 3 adapters, dedup, retries, beat schedule)
+- [x] 04-02: Listings API + auto-match (built 2026-10-12: filters, min_score, CSV/JSON import, 0004 migration)
 
 ### Phase 5: Analytics + Hardening (PRD Phase 4)
 **Goal**: Analytics endpoints serve correct results fast, and the platform is rate-limited, audited, and benchmarked.
@@ -111,6 +112,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 1. Bootstrap | 1/1 | Complete | 2026-10-12 |
 | 2. Auth + Tracker | 2/2 | Complete | 2026-10-12 |
 | 3. JD Match Scoring | 2/2 | Complete | 2026-10-12 |
-| 4. Ingestion Workers | 0/TBD | Not started | - |
+| 4. Ingestion Workers | 2/2 | Complete | 2026-10-12 |
 | 5. Analytics + Hardening | 0/TBD | Not started | - |
 | 6. Polish + Demo | 0/TBD | Not started | - |

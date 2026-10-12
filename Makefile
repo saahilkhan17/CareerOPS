@@ -18,10 +18,10 @@ run:
 	uvicorn app.main:app --reload
 
 worker:
-	celery -A app.workers.celery_app worker --loglevel=info
+	celery -A app.workers.celery worker --loglevel=info
 
 beat:
-	celery -A app.workers.celery_app beat --loglevel=info
+	celery -A app.workers.celery beat --loglevel=info
 
 test:
 	pytest

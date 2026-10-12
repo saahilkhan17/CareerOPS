@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 4: Ingestion Workers (ready to plan)
+**Current focus:** Phase 5: Analytics + Hardening (ready to plan)
 
 ## Current Position
 
-Phase: 4 of 6 (Ingestion Workers)
+Phase: 5 of 6 (Analytics + Hardening)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-10-12 — Phase 3 built+verified (107 tests, 98.5% cov, P/R 1.000/1.000)
+Last activity: 2026-10-12 — Phase 4 built+verified (142 tests, 98% cov, respx suite)
 
-Progress: [█████░░░░░] 50%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 7
 - Average duration: -
 - Total execution time: -
 
@@ -50,6 +50,8 @@ Recent decisions affecting current work:
   coverage greenlet concurrency; sqlite/StaticPool tests; naive-UTC clock
 - [Phase 3]: 78-skill taxonomy + deterministic extractor (P/R 1.000/1.000);
   weighted scorer + breakdown; LLM behind flag+seam; MAT-8 deferred to v2
+- [Phase 4]: Greenhouse/Lever/RemoteOK adapters (RemoteOK picked over Adzuna);
+  hash+id dedup, retries+throttle, idempotent capped auto-match, 0004 migration
 
 ### Pending Todos
 
@@ -72,5 +74,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Phase 3 complete and committed; Phase 4 ready to plan
+Stopped at: Phase 4 complete and committed; Phase 5 ready to plan
 Resume file: None

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "aaa-1",
+    "text": "Senior Backend Engineer",
+    "categories": {"location": "Remote", "team": "Engineering"},
+    "workplaceType": "remote",
+    "descriptionPlain": "Python and PostgreSQL required. 5 years of experience.",
+    "description": "<div>Python and PostgreSQL required.</div>",
+    "createdAt": 1727222400000,
+    "applyUrl": "https://lever.co/demo/aaa-1",
+    "salaryRange": {"min": 150000, "max": 200000, "currency": "usd"}
+  },
+  {
+    "id": "aaa-2",
+    "text": "Product Designer",
+    "categories": {"location": "Berlin"},
+    "description": "<p>Figma skills and CSS.</p>",
+    "createdAt": 1726000000000,
+    "applyUrl": "https://lever.co/demo/aaa-2"
+  }
+]

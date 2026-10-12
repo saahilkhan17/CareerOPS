@@ -21,6 +21,14 @@ class Settings(BaseSettings):
     match_weight_experience: float = 0.2
     match_weight_title: float = 0.1
     match_llm_enabled: bool = False
+    ingest_greenhouse_boards: dict[str, str] = {}
+    ingest_lever_companies: dict[str, str] = {}
+    ingest_remoteok_enabled: bool = True
+    ingest_http_retries: int = 3
+    ingest_http_backoff: float = 1.0
+    ingest_min_interval: float = 1.0
+    ingest_automatch_limit: int = 500
+    celery_eager: bool = False
 
 
 @lru_cache
