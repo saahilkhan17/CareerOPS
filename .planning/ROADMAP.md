@@ -56,10 +56,11 @@ Plans:
   2. Same result for same inputs across runs (LLM never touches the number)
   3. Extraction precision/recall reported over ≥20 labeled JDs; formula in docs/DECISIONS.md
   4. Edge cases handled: empty, huge, non-English JDs
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD at plan time
+- [x] 03-01: Taxonomy + extractor (built 2026-10-12: 78-skill taxonomy, 20-JD set, P/R 1.000/1.000)
+- [x] 03-02: Profile, scorer, endpoints (built 2026-10-12: deterministic scoring, history, LLM seam, 0003 migration)
 
 ### Phase 4: Ingestion Workers (PRD Phase 3)
 **Goal**: Scheduled ingestion fills listings without duplicates and auto-scores them against the profile.
@@ -109,7 +110,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 |-------|----------------|--------|-----------|
 | 1. Bootstrap | 1/1 | Complete | 2026-10-12 |
 | 2. Auth + Tracker | 2/2 | Complete | 2026-10-12 |
-| 3. JD Match Scoring | 0/TBD | Not started | - |
+| 3. JD Match Scoring | 2/2 | Complete | 2026-10-12 |
 | 4. Ingestion Workers | 0/TBD | Not started | - |
 | 5. Analytics + Hardening | 0/TBD | Not started | - |
 | 6. Polish + Demo | 0/TBD | Not started | - |

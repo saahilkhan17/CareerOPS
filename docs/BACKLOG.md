@@ -1,7 +1,8 @@
 # Backlog (ideas, not current scope — do not build without a phase)
 
 - [ ] API keys auth (AUTH-5, Phase 2 P1 — already in scope, keep)
-- [ ] pgvector embedding signal for match scoring (MAT-8, P2)
+- [ ] pgvector embedding signal for match scoring (MAT-8, P2 → deferred to v2,
+  decided 2026-10-12: needs pgvector extension + embedding provider, out of scope)
 - [ ] Reminder-due notification hook (TRK-7, P2)
 - [ ] Dashboard frontend (post-v1)
 - [ ] Multi-user demo seed vs single demo user (PRD §15 Q4 — decide in Phase 6)

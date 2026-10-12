@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://careerops:careerops@localhost:5432/careerops"
     redis_url: str = "redis://localhost:6379/0"
     auth_secret_key: str | None = None
+    match_weight_required: float = 0.5
+    match_weight_preferred: float = 0.2
+    match_weight_experience: float = 0.2
+    match_weight_title: float = 0.1
+    match_llm_enabled: bool = False
 
 
 @lru_cache

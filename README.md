@@ -25,7 +25,7 @@ make lint       # ruff check + format --check + mypy
 | Ops | `GET /health`, `GET /ready` | 1 ✅ |
 | Auth | `POST /auth/register, /login, /refresh, /logout`, `GET /me`, `POST/GET/DELETE /auth/api-keys` | 2 ✅ |
 | Tracker | CRUD `/applications`, `POST /{id}/status`, notes, reminders, `GET /reminders/due`, `GET /export.csv` | 2 ✅ |
-| Match | `POST /match`, `POST /match/{application_id}` | 3 |
+| Match | `POST /match`, `POST /match/{application_id}`, `GET /match/history`, `GET/PUT /profile` | 3 ✅ |
 | Listings | `GET /listings`, import, ingestion runs | 4 |
 | Analytics | skills, salary, trends, my-gap | 5 |
 

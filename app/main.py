@@ -12,6 +12,7 @@ from app.core.logging import configure_logging
 from app.core.middleware import REQUEST_ID_HEADER, RequestIdMiddleware
 from app.db.session import get_engine
 from app.modules.auth.router import router as auth_router
+from app.modules.match.router import router as match_router
 from app.modules.tracker.router import router as tracker_router
 
 logger = logging.getLogger("careerops.app")
@@ -40,6 +41,7 @@ def create_app() -> FastAPI:
     app.add_middleware(RequestIdMiddleware)
     app.include_router(auth_router)
     app.include_router(tracker_router)
+    app.include_router(match_router)
 
     @app.get("/health")
     async def health() -> dict[str, str]:

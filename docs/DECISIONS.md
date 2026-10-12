@@ -66,3 +66,18 @@ All timestamps naive UTC via `utcnow()` (consistent on sqlite and on PG
 `timestamptz` with UTC server TZ). Route signatures use
 `Annotated[X, Depends(...)]` (B008-clean, modern FastAPI style). Status: accepted.
 
+## ADR-0009: match scoring formula + measured extraction quality (2026-10-12)
+
+score = round(100 * Σ(w·c)/Σw), weights required 0.5 / preferred 0.2 /
+experience 0.2 / title 0.1 (config, normalized by sum). Components: required
+coverage (1.0 if none stated), preferred coverage (1.0 if none), experience =
+min(profile_max_years/min_years, 1) (1.0 if no minimum), title = overlap
+coefficient vs best target role on stopword-stripped tokens (0.5 neutral when
+title or roles missing). Missing data is neutral, never punishing.
+Extraction measured over 20 labeled JDs (`tests/fixtures/jds/labeled.json`):
+**precision 1.000, recall 1.000** (micro-averaged, required/preferred splits
+exact on all 20). LLM explanation lives behind `match_llm_enabled` + the
+`Explainer` seam and provably cannot move the number (flag-matrix test).
+MAT-8 (pgvector) deferred to v2 — no vector infra in this phase's scope.
+Status: accepted.
+

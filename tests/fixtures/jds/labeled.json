@@ -1,0 +1,202 @@
+[
+  {
+    "expected_preferred": ["AWS"],
+    "expected_required": ["Python", "FastAPI", "PostgreSQL", "SQL", "Docker"],
+    "expected_skills": ["Python", "FastAPI", "PostgreSQL", "SQL", "Docker", "AWS"],
+    "id": "jd01",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Backend Engineer, Platform team.\n\nRequirements:\n- 3 years of experience with Python and FastAPI.\n- Strong PostgreSQL and SQL skills.\n- Docker experience is required.\n\nNice to have:\n- AWS exposure.\n- Docker in production is a plus.",
+    "title": "Backend Engineer (Python)"
+  },
+  {
+    "expected_preferred": ["React", "AWS"],
+    "expected_required": ["Python", "Django", "PostgreSQL", "Docker", "CI/CD"],
+    "expected_skills": ["Python", "Django", "PostgreSQL", "Docker", "CI/CD", "React", "AWS"],
+    "id": "jd02",
+    "min_years": 5,
+    "seniority": "senior",
+    "text": "Senior Django Developer.\n\nRequirements:\n- 5+ years of experience building web apps with Python and Django.\n- PostgreSQL in production.\n- Docker and CI/CD pipelines.\n\nPreferred qualifications:\n- React familiarity.\n- AWS knowledge.",
+    "title": "Senior Django Developer"
+  },
+  {
+    "expected_preferred": ["Figma"],
+    "expected_required": ["React", "TypeScript", "CSS", "Git"],
+    "expected_skills": ["React", "TypeScript", "CSS", "Git", "Figma"],
+    "id": "jd03",
+    "min_years": 1,
+    "seniority": "junior",
+    "text": "Junior Frontend Developer.\n\nRequirements:\n- 1 year of experience with React, TypeScript, and CSS.\n- Git basics.\n\nNice to have:\n- Figma experience.",
+    "title": "Junior Frontend Developer"
+  },
+  {
+    "expected_preferred": ["dbt"],
+    "expected_required": ["Python", "SQL", "Airflow", "Snowflake"],
+    "expected_skills": ["Python", "SQL", "Airflow", "Snowflake", "dbt"],
+    "id": "jd04",
+    "min_years": 4,
+    "seniority": "unspecified",
+    "text": "Data Engineer.\n\nRequirements:\n- 4 years of experience with Python and SQL.\n- Apache Airflow for orchestration.\n- Snowflake data warehouse.\n\nPreferred:\n- dbt experience.",
+    "title": "Data Engineer"
+  },
+  {
+    "expected_preferred": ["Prometheus", "Grafana"],
+    "expected_required": ["AWS", "Kubernetes", "Terraform", "Docker"],
+    "expected_skills": ["AWS", "Kubernetes", "Terraform", "Docker", "Prometheus", "Grafana"],
+    "id": "jd05",
+    "min_years": 4,
+    "seniority": "unspecified",
+    "text": "DevOps Engineer.\n\nRequirements:\n- 4 years of experience with AWS and Kubernetes.\n- Terraform for infrastructure.\n- Docker containers.\n\nBonus:\n- Prometheus and Grafana.",
+    "title": "DevOps Engineer"
+  },
+  {
+    "expected_preferred": ["AWS"],
+    "expected_required": ["Python", "PyTorch", "Machine Learning"],
+    "expected_skills": ["Python", "PyTorch", "Machine Learning", "AWS"],
+    "id": "jd06",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Machine Learning Engineer.\n\nRequirements:\n- 3 years of experience with Python and PyTorch.\n- Machine learning fundamentals.\n\nPreferred:\n- AWS for model deployment.",
+    "title": "Machine Learning Engineer"
+  },
+  {
+    "expected_preferred": ["Redis"],
+    "expected_required": ["Node.js", "JavaScript", "TypeScript", "MongoDB", "GraphQL"],
+    "expected_skills": ["Node.js", "JavaScript", "TypeScript", "MongoDB", "GraphQL", "Redis"],
+    "id": "jd07",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Backend Engineer (Node.js).\n\nRequirements:\n- 3 years of experience with Node.js and TypeScript.\n- MongoDB and GraphQL APIs.\n\nNice to have:\n- Redis caching.",
+    "title": "Backend Engineer (Node)"
+  },
+  {
+    "expected_preferred": ["Kafka"],
+    "expected_required": ["Java", "Spring Boot", "MySQL"],
+    "expected_skills": ["Java", "Spring Boot", "MySQL", "Kafka"],
+    "id": "jd08",
+    "min_years": 5,
+    "seniority": "senior",
+    "text": "Senior Java Developer.\n\nRequirements:\n- 5 years of experience with Java and Spring Boot.\n- MySQL databases.\n\nPreferred qualifications:\n- Kafka event streaming.",
+    "title": "Senior Java Developer"
+  },
+  {
+    "expected_preferred": ["PostgreSQL"],
+    "expected_required": ["Go", "gRPC", "Docker", "Kubernetes"],
+    "expected_skills": ["Go", "gRPC", "Docker", "Kubernetes", "PostgreSQL"],
+    "id": "jd09",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Backend Engineer (Go).\n\nRequirements:\n- 3 years of experience with Go and gRPC.\n- Docker and Kubernetes.\n\nPreferred:\n- PostgreSQL.",
+    "title": "Backend Engineer (Go)"
+  },
+  {
+    "expected_preferred": ["Playwright"],
+    "expected_required": ["Selenium", "Pytest", "CI/CD"],
+    "expected_skills": ["Selenium", "Pytest", "CI/CD", "Playwright"],
+    "id": "jd10",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "QA Automation Engineer.\n\nRequirements:\n- 3 years of experience with Selenium and Pytest.\n- CI/CD pipelines.\n\nPreferred:\n- Playwright.",
+    "title": "QA Automation Engineer"
+  },
+  {
+    "expected_preferred": ["TypeScript", "Docker"],
+    "expected_required": ["React", "Node.js", "JavaScript", "PostgreSQL"],
+    "expected_skills": ["React", "Node.js", "JavaScript", "PostgreSQL", "TypeScript", "Docker"],
+    "id": "jd11",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Fullstack Developer.\n\nRequirements:\n- 3 years of experience with React and Node.js.\n- PostgreSQL.\n\nNice to have:\n- TypeScript.\n- Docker.",
+    "title": "Fullstack Developer"
+  },
+  {
+    "expected_preferred": ["GraphQL"],
+    "expected_required": ["React", "React Native", "TypeScript"],
+    "expected_skills": ["React", "React Native", "TypeScript", "GraphQL"],
+    "id": "jd12",
+    "min_years": 2,
+    "seniority": "unspecified",
+    "text": "Mobile Developer (React Native).\n\nRequirements:\n- 2 years of experience with React Native and TypeScript.\n\nPreferred:\n- GraphQL.",
+    "title": "Mobile Developer (React Native)"
+  },
+  {
+    "expected_preferred": ["Redis"],
+    "expected_required": ["Python", "PostgreSQL", "JWT", "OAuth"],
+    "expected_skills": ["Python", "PostgreSQL", "JWT", "OAuth", "Redis"],
+    "id": "jd13",
+    "min_years": 3,
+    "seniority": "unspecified",
+    "text": "Backend Engineer (API).\n\nRequirements:\n- 3 years of experience with Python and PostgreSQL.\n- JWT authentication and OAuth flows.\n\nNice to have:\n- Redis.",
+    "title": "Backend Engineer (API)"
+  },
+  {
+    "expected_preferred": ["Snowflake"],
+    "expected_required": ["SQL", "Python", "BigQuery"],
+    "expected_skills": ["SQL", "Python", "BigQuery", "Snowflake"],
+    "id": "jd14",
+    "min_years": 2,
+    "seniority": "unspecified",
+    "text": "Data Analyst.\n\nRequirements:\n- 2 years of experience with SQL and Python.\n- BigQuery.\n\nPreferred:\n- Snowflake.",
+    "title": "Data Analyst"
+  },
+  {
+    "expected_preferred": ["Cypress"],
+    "expected_required": ["Vue", "TypeScript", "CSS"],
+    "expected_skills": ["Vue", "TypeScript", "CSS", "Cypress"],
+    "id": "jd15",
+    "min_years": 2,
+    "seniority": "unspecified",
+    "text": "Frontend Developer (Vue).\n\nRequirements:\n- 2 years of experience with Vue and TypeScript.\n- CSS.\n\nNice to have:\n- Cypress.",
+    "title": "Frontend Developer (Vue)"
+  },
+  {
+    "expected_preferred": ["Go"],
+    "expected_required": ["AWS", "Terraform", "Kubernetes", "Prometheus"],
+    "expected_skills": ["AWS", "Terraform", "Kubernetes", "Prometheus", "Go"],
+    "id": "jd16",
+    "min_years": 6,
+    "seniority": "senior",
+    "text": "Platform Lead.\n\nRequirements:\n- 6 years of experience with AWS, Terraform, and Kubernetes.\n- Prometheus monitoring.\n\nPreferred:\n- Go services.",
+    "title": "Platform Lead"
+  },
+  {
+    "expected_preferred": ["Django"],
+    "expected_required": ["Python", "SQL", "Git"],
+    "expected_skills": ["Python", "SQL", "Git", "Django"],
+    "id": "jd17",
+    "min_years": null,
+    "seniority": "junior",
+    "text": "Fresher Backend Developer.\n\nRequirements:\n- Python and SQL fundamentals.\n- Git.\n\nNice to have:\n- Django.",
+    "title": "Fresher Backend Developer"
+  },
+  {
+    "expected_preferred": ["Docker"],
+    "expected_required": ["Rust", "Linux"],
+    "expected_skills": ["Rust", "Linux", "Docker"],
+    "id": "jd18",
+    "min_years": 2,
+    "seniority": "unspecified",
+    "text": "Systems Engineer (Rust).\n\nRequirements:\n- 2+ years of experience with Rust.\n- Linux.\n\nPreferred:\n- Docker.",
+    "title": "Systems Engineer (Rust)"
+  },
+  {
+    "expected_preferred": ["Java", "Spring Boot"],
+    "expected_required": ["Angular", "TypeScript", "REST", "HTML", "CSS"],
+    "expected_skills": ["Angular", "TypeScript", "REST", "HTML", "CSS", "Java", "Spring Boot"],
+    "id": "jd19",
+    "min_years": 4,
+    "seniority": "unspecified",
+    "text": "Frontend Developer (Angular).\n\nRequirements:\n- 4 years of experience with Angular, TypeScript, and REST APIs.\n- HTML and CSS.\n\nPreferred:\n- Java and Spring Boot.",
+    "title": "Frontend Developer (Angular)"
+  },
+  {
+    "expected_preferred": ["Python"],
+    "expected_required": ["C++", "Linux"],
+    "expected_skills": ["C++", "Linux", "Python"],
+    "id": "jd20",
+    "min_years": 4,
+    "seniority": "unspecified",
+    "text": "Embedded Engineer (C++).\n\nRequirements:\n- 4 years of experience with C++ on Linux.\n\nPreferred:\n- Python scripting.",
+    "title": "Embedded Engineer (C++)"
+  }
+]

@@ -1,0 +1,505 @@
+{
+  "skills": [
+    {
+      "aliases": [
+        "agile"
+      ],
+      "canonical": "Agile"
+    },
+    {
+      "aliases": [
+        "airflow",
+        "apache airflow"
+      ],
+      "canonical": "Airflow"
+    },
+    {
+      "aliases": [],
+      "canonical": "Alembic"
+    },
+    {
+      "aliases": [],
+      "canonical": "Angular"
+    },
+    {
+      "aliases": [
+        "aws",
+        "amazon web services"
+      ],
+      "canonical": "AWS"
+    },
+    {
+      "aliases": [
+        "azure",
+        "microsoft azure"
+      ],
+      "canonical": "Azure"
+    },
+    {
+      "aliases": [
+        "bash",
+        "shell scripting"
+      ],
+      "canonical": "Bash"
+    },
+    {
+      "aliases": [
+        "bigquery",
+        "big query"
+      ],
+      "canonical": "BigQuery"
+    },
+    {
+      "aliases": [
+        "c language"
+      ],
+      "canonical": "C",
+      "not_after": [
+        "+",
+        "#"
+      ],
+      "sensitive": true
+    },
+    {
+      "aliases": [
+        "csharp",
+        ".net",
+        "dotnet"
+      ],
+      "canonical": "C#",
+      "sensitive": true
+    },
+    {
+      "aliases": [
+        "cplusplus"
+      ],
+      "canonical": "C++",
+      "sensitive": true
+    },
+    {
+      "aliases": [],
+      "canonical": "Celery"
+    },
+    {
+      "aliases": [
+        "cicd",
+        "ci/cd pipelines",
+        "ci cd"
+      ],
+      "canonical": "CI/CD"
+    },
+    {
+      "aliases": [
+        "css",
+        "css3"
+      ],
+      "canonical": "CSS"
+    },
+    {
+      "aliases": [
+        "cypress"
+      ],
+      "canonical": "Cypress"
+    },
+    {
+      "aliases": [
+        "dbt"
+      ],
+      "canonical": "dbt"
+    },
+    {
+      "aliases": [],
+      "canonical": "Django"
+    },
+    {
+      "aliases": [
+        "drf",
+        "django-rest-framework",
+        "django rest"
+      ],
+      "canonical": "Django REST Framework"
+    },
+    {
+      "aliases": [
+        "docker"
+      ],
+      "canonical": "Docker"
+    },
+    {
+      "aliases": [
+        "elasticsearch",
+        "elastic search",
+        "elastic"
+      ],
+      "canonical": "Elasticsearch"
+    },
+    {
+      "aliases": [
+        "fast api"
+      ],
+      "canonical": "FastAPI"
+    },
+    {
+      "aliases": [
+        "figma"
+      ],
+      "canonical": "Figma"
+    },
+    {
+      "aliases": [],
+      "canonical": "Flask"
+    },
+    {
+      "aliases": [
+        "gcp",
+        "google cloud",
+        "google cloud platform"
+      ],
+      "canonical": "GCP"
+    },
+    {
+      "aliases": [
+        "git"
+      ],
+      "canonical": "Git"
+    },
+    {
+      "aliases": [
+        "gh actions",
+        "gha",
+        "github action"
+      ],
+      "canonical": "GitHub Actions"
+    },
+    {
+      "aliases": [
+        "golang"
+      ],
+      "canonical": "Go",
+      "sensitive": true
+    },
+    {
+      "aliases": [],
+      "canonical": "Grafana"
+    },
+    {
+      "aliases": [
+        "graphql"
+      ],
+      "canonical": "GraphQL"
+    },
+    {
+      "aliases": [
+        "grpc"
+      ],
+      "canonical": "gRPC"
+    },
+    {
+      "aliases": [
+        "html",
+        "html5"
+      ],
+      "canonical": "HTML"
+    },
+    {
+      "aliases": [
+        "java"
+      ],
+      "canonical": "Java"
+    },
+    {
+      "aliases": [
+        "js",
+        "javascript"
+      ],
+      "canonical": "JavaScript"
+    },
+    {
+      "aliases": [
+        "jest"
+      ],
+      "canonical": "Jest"
+    },
+    {
+      "aliases": [
+        "jira"
+      ],
+      "canonical": "Jira"
+    },
+    {
+      "aliases": [
+        "junit"
+      ],
+      "canonical": "JUnit"
+    },
+    {
+      "aliases": [
+        "jwt",
+        "json web token",
+        "json web tokens"
+      ],
+      "canonical": "JWT"
+    },
+    {
+      "aliases": [
+        "kafka",
+        "apache kafka"
+      ],
+      "canonical": "Kafka"
+    },
+    {
+      "aliases": [
+        "k8s",
+        "kubernetes"
+      ],
+      "canonical": "Kubernetes"
+    },
+    {
+      "aliases": [
+        "linux",
+        "unix"
+      ],
+      "canonical": "Linux"
+    },
+    {
+      "aliases": [
+        "ml",
+        "machine-learning"
+      ],
+      "canonical": "Machine Learning"
+    },
+    {
+      "aliases": [
+        "mongodb",
+        "mongo"
+      ],
+      "canonical": "MongoDB"
+    },
+    {
+      "aliases": [
+        "mysql",
+        "mariadb"
+      ],
+      "canonical": "MySQL"
+    },
+    {
+      "aliases": [
+        "nextjs",
+        "next.js"
+      ],
+      "canonical": "Next.js"
+    },
+    {
+      "aliases": [],
+      "canonical": "Nginx"
+    },
+    {
+      "aliases": [
+        "nodejs",
+        "node"
+      ],
+      "canonical": "Node.js"
+    },
+    {
+      "aliases": [
+        "numpy"
+      ],
+      "canonical": "NumPy"
+    },
+    {
+      "aliases": [
+        "oauth",
+        "oauth2",
+        "oauth 2"
+      ],
+      "canonical": "OAuth"
+    },
+    {
+      "aliases": [
+        "pandas"
+      ],
+      "canonical": "Pandas"
+    },
+    {
+      "aliases": [
+        "playwright"
+      ],
+      "canonical": "Playwright"
+    },
+    {
+      "aliases": [
+        "postgres",
+        "postgresql",
+        "psql"
+      ],
+      "canonical": "PostgreSQL"
+    },
+    {
+      "aliases": [
+        "prom",
+        "prometheus"
+      ],
+      "canonical": "Prometheus"
+    },
+    {
+      "aliases": [
+        "pydantic2"
+      ],
+      "canonical": "Pydantic"
+    },
+    {
+      "aliases": [
+        "pytest-asyncio"
+      ],
+      "canonical": "Pytest"
+    },
+    {
+      "aliases": [
+        "python3"
+      ],
+      "canonical": "Python"
+    },
+    {
+      "aliases": [
+        "pytorch"
+      ],
+      "canonical": "PyTorch"
+    },
+    {
+      "aliases": [],
+      "canonical": "R",
+      "not_after": [
+        "&"
+      ],
+      "sensitive": true
+    },
+    {
+      "aliases": [
+        "rabbitmq",
+        "rabbit mq"
+      ],
+      "canonical": "RabbitMQ"
+    },
+    {
+      "aliases": [
+        "reactjs",
+        "react.js"
+      ],
+      "canonical": "React"
+    },
+    {
+      "aliases": [
+        "react-native",
+        "reactnative"
+      ],
+      "canonical": "React Native"
+    },
+    {
+      "aliases": [],
+      "canonical": "Redis"
+    },
+    {
+      "aliases": [
+        "restful",
+        "rest api",
+        "rest apis",
+        "restful apis"
+      ],
+      "canonical": "REST"
+    },
+    {
+      "aliases": [],
+      "canonical": "Rust"
+    },
+    {
+      "aliases": [
+        "sklearn",
+        "scikit learn"
+      ],
+      "canonical": "scikit-learn"
+    },
+    {
+      "aliases": [],
+      "canonical": "Scrum"
+    },
+    {
+      "aliases": [
+        "selenium"
+      ],
+      "canonical": "Selenium"
+    },
+    {
+      "aliases": [
+        "snowflake"
+      ],
+      "canonical": "Snowflake"
+    },
+    {
+      "aliases": [
+        "springboot",
+        "spring boot"
+      ],
+      "canonical": "Spring Boot"
+    },
+    {
+      "aliases": [
+        "sql"
+      ],
+      "canonical": "SQL"
+    },
+    {
+      "aliases": [],
+      "canonical": "SQLAlchemy"
+    },
+    {
+      "aliases": [
+        "sqlite",
+        "sqlite3"
+      ],
+      "canonical": "SQLite"
+    },
+    {
+      "aliases": [
+        "stripe"
+      ],
+      "canonical": "Stripe"
+    },
+    {
+      "aliases": [
+        "tailwindcss",
+        "tailwind"
+      ],
+      "canonical": "Tailwind CSS"
+    },
+    {
+      "aliases": [],
+      "canonical": "TensorFlow"
+    },
+    {
+      "aliases": [],
+      "canonical": "Terraform"
+    },
+    {
+      "aliases": [
+        "ts",
+        "typescript"
+      ],
+      "canonical": "TypeScript"
+    },
+    {
+      "aliases": [
+        "vuejs",
+        "vue.js"
+      ],
+      "canonical": "Vue"
+    },
+    {
+      "aliases": [
+        "websocket",
+        "web-sockets"
+      ],
+      "canonical": "WebSockets"
+    }
+  ],
+  "version": "2026.10.1"
+}

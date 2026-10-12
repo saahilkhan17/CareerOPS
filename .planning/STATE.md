@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 3: JD Match Scoring (ready to plan)
+**Current focus:** Phase 4: Ingestion Workers (ready to plan)
 
 ## Current Position
 
-Phase: 3 of 6 (JD Match Scoring)
+Phase: 4 of 6 (Ingestion Workers)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-10-12 — Phase 2 built+verified (70 tests, 97.7% cov, ruff+mypy clean)
+Last activity: 2026-10-12 — Phase 3 built+verified (107 tests, 98.5% cov, P/R 1.000/1.000)
 
-Progress: [███░░░░░░░] 25%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 5
 - Average duration: -
 - Total execution time: -
 
@@ -48,6 +48,8 @@ Recent decisions affecting current work:
   packages.find restricted to app* (flat-layout discovery fix)
 - [Phase 2]: bcrypt+JWT+opaque-refresh auth; strict state machine (13 edges);
   coverage greenlet concurrency; sqlite/StaticPool tests; naive-UTC clock
+- [Phase 3]: 78-skill taxonomy + deterministic extractor (P/R 1.000/1.000);
+  weighted scorer + breakdown; LLM behind flag+seam; MAT-8 deferred to v2
 
 ### Pending Todos
 
@@ -70,5 +72,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Phase 2 complete and committed; Phase 3 ready to plan
+Stopped at: Phase 3 complete and committed; Phase 4 ready to plan
 Resume file: None
