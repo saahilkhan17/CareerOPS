@@ -30,6 +30,8 @@ logger = logging.getLogger("careerops.ingestion")
 
 TAG_RE = re.compile(r"<[^>]+>")
 
+MAX_IMPORT_RECORDS = 2000
+
 
 def clean_html(value: str | None) -> str | None:
     """Strip HTML tags/entities from source descriptions (regex, deterministic)."""

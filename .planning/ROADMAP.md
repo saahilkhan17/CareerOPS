@@ -98,10 +98,10 @@ Plans:
   1. `make seed` gives a demo user with realistic data covering all features
   2. README has pitch, architecture diagram, quickstart, real curl examples, measured stats only
   3. Demo script, LICENSE, pip-audit + secrets + CORS + validation review complete
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 06-01: TBD at plan time
+- [x] 06-01: Polish + demo (built 2026-10-12: seed, README, demo script, LICENSE, security pass)
 
 ## Progress
 
@@ -115,4 +115,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. JD Match Scoring | 2/2 | Complete | 2026-10-12 |
 | 4. Ingestion Workers | 2/2 | Complete | 2026-10-12 |
 | 5. Analytics + Hardening | 2/2 | Complete | 2026-10-12 |
-| 6. Polish + Demo | 0/TBD | Not started | - |
+| 6. Polish + Demo | 1/1 | Complete | 2026-10-12 |

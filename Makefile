@@ -38,4 +38,4 @@ revision:
 	alembic revision --autogenerate -m "$(m)"
 
 seed:
-	@echo "seed not implemented yet (Phase 6)" && exit 1
+	python scripts/seed.py

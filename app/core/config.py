@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     celery_eager: bool = False
     analytics_cache_ttl: int = 300
     rate_limit_per_minute: int = 120
+    cors_origins: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 
 
 @lru_cache

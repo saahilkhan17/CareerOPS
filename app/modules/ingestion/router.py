@@ -124,6 +124,11 @@ async def import_listings(
     async def _fetch() -> list[RawListing]:
         return raws
 
+    if len(raws) > service.MAX_IMPORT_RECORDS:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"import too large (max {service.MAX_IMPORT_RECORDS} records)",
+        )
     stats = await service.run_ingestion_in("import", session, fetcher=_fetch, actor=user.id)
     if stats["inserted"]:
         # Keep the precomputed summary fresh: user imports expect visibility.

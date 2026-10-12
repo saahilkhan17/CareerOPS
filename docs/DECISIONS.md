@@ -122,3 +122,20 @@ envelope with sanitized details (raw pydantic ctx holds exception objects and
 is not JSON-safe). duration_ms rides the log record as a real field, not just
 message text. Status: accepted.
 
+## ADR-0014: Phase 6 security pass (2026-10-12)
+
+- pip-audit over the venv: no known vulnerabilities (CareerOps itself is
+  local-only, unauditable by PyPI — expected).
+- Secrets scan: full git history + worktree checked for sk-/ghp_/ASIA and
+  quoted password/token assignments — clean. Only matches are the scanner's
+  own documentation and test fixture passwords (not real secrets). Demo
+  credentials (demo@careerops.dev / demo1234) are documented demo-only.
+- CORS allowlist from settings (localhost:3000/8000 default), credentials on.
+- Validation review: lengths capped (passwords 8–72, notes ≤5000, imports
+  ≤2000 records → 400); URLs stay plain strings (no false rejects); emails
+  use EmailStr (note: special-use domains like .local are rejected by
+  email-validator — demo uses .dev).
+- Seeded demo user is demo@careerops.dev: .local fails EmailStr validation
+  (caught by a live 422 while capturing README examples).
+Status: accepted.
+

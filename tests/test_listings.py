@@ -254,3 +254,15 @@ async def test_import_csv_edge_cases(
     # CSV format without csv_text → 400.
     missing = await client.post("/listings/import", json={"format": "csv"}, headers=headers)
     assert missing.status_code == 400
+
+
+async def test_import_too_large_400(
+    client: AsyncClient, test_factory: async_sessionmaker[AsyncSession]
+) -> None:
+    headers = await _headers(test_factory, "i6@example.com")
+    records = [{"title": f"T{i}", "company": "C"} for i in range(2001)]
+    resp = await client.post(
+        "/listings/import", json={"format": "json", "records": records}, headers=headers
+    )
+    assert resp.status_code == 400
+    assert "too large" in resp.json()["error"]["message"]

@@ -144,6 +144,13 @@ async def test_notes_add_and_list(
     listed = await client.get(f"/applications/{created['id']}/notes", headers=headers)
     assert [n["body"] for n in listed.json()] == ["reached out on LinkedIn"]
 
+    too_long = await client.post(
+        f"/applications/{created['id']}/notes",
+        json={"body": "x" * 5001},
+        headers=headers,
+    )
+    assert too_long.status_code == 422
+
 
 async def test_reminders_add_list_done_due(
     client: AsyncClient, test_factory: async_sessionmaker[AsyncSession]

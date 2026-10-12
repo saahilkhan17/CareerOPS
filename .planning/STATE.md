@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 6: Polish + Demo (ready to plan)
+**Current focus:** Done — all 6 phases complete (live-Docker verification pending)
 
 ## Current Position
 
 Phase: 6 of 6 (Polish + Demo)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-10-12 — Phase 5 built+verified (162 tests, 98% cov, bench numbers recorded)
+Plan: 1 of 1 in current phase
+Status: Complete
+Last activity: 2026-10-12 — Phase 6 built+verified (166 tests, 98.4% cov, README + demo + security pass)
 
-Progress: [████████░░] 83%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: -
 - Total execution time: -
 
@@ -54,6 +54,8 @@ Recent decisions affecting current work:
   hash+id dedup, retries+throttle, idempotent capped auto-match, 0004 migration
 - [Phase 5]: 5 SQL analytics endpoints + summary table + Redis cache (fakeredis);
   per-identity rate limits, audit log, 422 cleanup, bench + EXPLAIN numbers
+- [Phase 6]: seed script + full README (real examples) + demo script + MIT
+  LICENSE + security pass (pip-audit clean, history clean, CORS, caps)
 
 ### Pending Todos
 
@@ -76,5 +78,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Phase 5 complete and committed; Phase 6 ready to plan
+Stopped at: CareerOps v1 complete (6/6 phases); live-Docker verification is the only open item
 Resume file: None
