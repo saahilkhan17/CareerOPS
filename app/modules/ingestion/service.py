@@ -4,6 +4,7 @@ import hashlib
 import html
 import logging
 import re
+import uuid
 from collections.abc import Awaitable, Callable
 from datetime import datetime
 
@@ -12,8 +13,10 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from app.core.cache import invalidate_analytics
 from app.core.config import get_settings
 from app.core.time import utcnow
+from app.modules.audit import repository as audit_repository
 from app.modules.auth.models import User
 from app.modules.ingestion import sources
 from app.modules.ingestion.models import IngestionRun, Listing, ListingSkill
@@ -189,6 +192,7 @@ async def run_ingestion_in(
     source_name: str,
     session: AsyncSession,
     fetcher: Callable[[], Awaitable[list[RawListing]]] | None = None,
+    actor: uuid.UUID | None = None,
 ) -> dict[str, int]:
     """Pipeline body over a caller-managed session (router reuses its own)."""
     stats = {"fetched": 0, "inserted": 0, "skipped": 0, "errors": 0}
@@ -231,7 +235,10 @@ async def run_ingestion_in(
     run.inserted = stats["inserted"]
     run.skipped = stats["skipped"]
     run.errors = stats["errors"]
+    if actor is not None:
+        await audit_repository.log(session, actor, "ingestion.import", "listing")
     await session.commit()
+    await invalidate_analytics()
     return stats
 
 
@@ -302,4 +309,6 @@ async def auto_match(factory: async_sessionmaker[AsyncSession], limit: int = 500
                 )
                 result["scored"] += 1
             await session.commit()
+    if result["scored"]:
+        await invalidate_analytics()
     return result

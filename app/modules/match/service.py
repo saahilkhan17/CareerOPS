@@ -5,6 +5,7 @@ import uuid
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import get_settings
+from app.modules.audit import repository as audit_repository
 from app.modules.auth.models import User
 from app.modules.match import explainer as explainer_module
 from app.modules.match import repository, scorer
@@ -26,6 +27,24 @@ def weights_from_settings() -> scorer.Weights:
 def llm_enabled() -> bool:
     """Feature flag for the optional LLM explanation (default off)."""
     return get_settings().match_llm_enabled
+
+
+async def upsert_profile(
+    session: AsyncSession,
+    user: User,
+    skills: list[dict[str, object]],
+    target_roles: list[str],
+    education: str | None,
+    preferences: dict[str, object],
+) -> Profile:
+    """Create/replace the profile and audit the change (single commit)."""
+    profile = await repository.upsert_profile(
+        session, user.id, skills, target_roles, education, preferences
+    )
+    await audit_repository.log(session, user.id, "match.profile.upsert", "profile", profile.id)
+    await session.commit()
+    await session.refresh(profile)
+    return profile
 
 
 async def run_match(

@@ -29,6 +29,8 @@ class Settings(BaseSettings):
     ingest_min_interval: float = 1.0
     ingest_automatch_limit: int = 500
     celery_eager: bool = False
+    analytics_cache_ttl: int = 300
+    rate_limit_per_minute: int = 120
 
 
 @lru_cache

@@ -6,6 +6,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core import cache
 from app.db.session import get_session
 from app.modules.auth.deps import get_current_user
 from app.modules.auth.models import User
@@ -56,16 +57,15 @@ async def put_profile(
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> ProfileOut:
     """Create or replace my profile (skills stored raw, canonicalized at score)."""
-    profile = await repository.upsert_profile(
+    profile = await service.upsert_profile(
         session,
-        user.id,
+        user,
         [s.model_dump() for s in payload.skills],
         payload.target_roles,
         payload.education,
         payload.preferences,
     )
-    await session.commit()
-    await session.refresh(profile)
+    await cache.invalidate_user_gap(str(user.id))
     return ProfileOut.model_validate(service.profile_out(profile))
 
 

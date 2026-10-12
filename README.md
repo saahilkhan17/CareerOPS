@@ -27,7 +27,7 @@ make lint       # ruff check + format --check + mypy
 | Tracker | CRUD `/applications`, `POST /{id}/status`, notes, reminders, `GET /reminders/due`, `GET /export.csv` | 2 ✅ |
 | Match | `POST /match`, `POST /match/{application_id}`, `GET /match/history`, `GET/PUT /profile` | 3 ✅ |
 | Listings | `GET /listings`, `GET /listings/{id}`, `POST /listings/import`, `GET /ingestion/runs` | 4 ✅ |
-| Analytics | skills, salary, trends, my-gap | 5 |
+| Analytics | skills/top, cooccurrence, salary, trends, my-gap | 5 ✅ |
 
 Errors always look like `{"error": {"code": "...", "message": "..."}}`.
 

@@ -90,11 +90,35 @@ slug→company come from settings maps (their public APIs carry no company
 name); empty maps are legal (tasks record zero-fetch runs).
 
 ## ADR-0011: Celery tested without a broker (2026-10-12)
-
 No Redis here, so tasks are thin sync wrappers over async services that take
 an explicit session factory; the suite drives services directly on sqlite and
 asserts task/beat wiring (names, autoretry, schedule) on the Celery app
 object. respx mocks all HTTP; unit tests pin retry/backoff/throttle behavior
 (including the fix that 4xx from raise_for_status must NOT enter the retry
 loop). Live worker/beat verification needs Redis (compose ships it).
+
+## ADR-0012: analytics performance, measured on sqlite (2026-10-12)
+
+EXPLAIN QUERY PLAN over 2000 listings (sqlite, ad-hoc script, since removed):
+live GROUP BY over the skills⋈listings join = SCAN 2000 skill rows + covering
+index lookups + two TEMP B-TREEs at 1.68 ms mean; summary-table read = SCAN 8
+rows + TEMP B-TREEs at 0.77 ms mean (~2.2×, and the gap widens with scale
+since the summary is bounded by days×skills, not postings). Endpoint bench
+(scripts/bench.py, 50 apps + 300 listings, TestClient + sqlite + fakeredis):
+health 3.1 ms, apps list 8.8–9.2 ms, match ~10 ms, listings ~13 ms,
+skills/top cold 8.8 ms vs warm 5.7 ms, my-gap 6.2 ms. Full table in
+docs/PERFORMANCE.md. PG/Redis numbers pending Docker; summary tables chosen
+over materialized views so the mechanism is testable on sqlite.
+Status: accepted.
+
+## ADR-0013: hardening trade-offs (2026-10-12)
+
+Redis-backed per-identity rate limiting (JWT sub → key hash → IP, fixed 60s
+window, 429 envelope + Retry-After) and JSON cache both fail open when Redis
+is down — availability over strictness, logged, tested with a broken client.
+Audit rows are written by services before their own commits (one commit per
+action, no phantom rows on rollback). RequestValidationError maps to a 422
+envelope with sanitized details (raw pydantic ctx holds exception objects and
+is not JSON-safe). duration_ms rides the log record as a real field, not just
+message text. Status: accepted.
 

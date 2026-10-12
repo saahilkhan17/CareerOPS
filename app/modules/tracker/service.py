@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.time import utcnow
+from app.modules.audit import repository as audit_repository
 from app.modules.auth.models import User
 from app.modules.tracker import repository
 from app.modules.tracker.models import ApplicationStatus, JobApplication
@@ -73,6 +74,9 @@ async def create_application(
     data = payload.model_dump(exclude={"company"})
     row = await repository.create_application(session, user.id, company, **data)
     await repository.add_history(session, row.id, None, row.status)
+    await audit_repository.log(
+        session, user.id, "tracker.application.create", "application", row.id
+    )
     await session.commit()
     await session.refresh(row)
     return row
@@ -90,6 +94,9 @@ async def update_application(
     for field, value in data.items():
         setattr(row, field, value)
     row.updated_at = utcnow()
+    await audit_repository.log(
+        session, user.id, "tracker.application.update", "application", row.id
+    )
     await session.commit()
     await session.refresh(row)
     return row
@@ -98,6 +105,9 @@ async def update_application(
 async def delete_application(session: AsyncSession, user: User, app_id: uuid.UUID) -> None:
     """Delete an application; history/notes/reminders cascade."""
     row = await get_owned(session, user, app_id)
+    await audit_repository.log(
+        session, user.id, "tracker.application.delete", "application", row.id
+    )
     await repository.delete_application(session, row)
     await session.commit()
 
@@ -112,6 +122,9 @@ async def change_status(
     row.status = to_status
     row.updated_at = utcnow()
     await repository.add_history(session, row.id, from_status, to_status)
+    await audit_repository.log(
+        session, user.id, "tracker.application.status", "application", row.id
+    )
     await session.commit()
     await session.refresh(row)
     return row

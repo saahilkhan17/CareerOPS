@@ -32,5 +32,6 @@ class RequestIdMiddleware(BaseHTTPMiddleware):
             request.url.path,
             response.status_code,
             elapsed_ms,
+            extra={"duration_ms": elapsed_ms},
         )
         return response

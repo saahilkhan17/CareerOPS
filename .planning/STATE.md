@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 5: Analytics + Hardening (ready to plan)
+**Current focus:** Phase 6: Polish + Demo (ready to plan)
 
 ## Current Position
 
-Phase: 5 of 6 (Analytics + Hardening)
+Phase: 6 of 6 (Polish + Demo)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-10-12 — Phase 4 built+verified (142 tests, 98% cov, respx suite)
+Last activity: 2026-10-12 — Phase 5 built+verified (162 tests, 98% cov, bench numbers recorded)
 
-Progress: [███████░░░] 67%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 9
 - Average duration: -
 - Total execution time: -
 
@@ -52,6 +52,8 @@ Recent decisions affecting current work:
   weighted scorer + breakdown; LLM behind flag+seam; MAT-8 deferred to v2
 - [Phase 4]: Greenhouse/Lever/RemoteOK adapters (RemoteOK picked over Adzuna);
   hash+id dedup, retries+throttle, idempotent capped auto-match, 0004 migration
+- [Phase 5]: 5 SQL analytics endpoints + summary table + Redis cache (fakeredis);
+  per-identity rate limits, audit log, 422 cleanup, bench + EXPLAIN numbers
 
 ### Pending Todos
 
@@ -74,5 +76,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Phase 4 complete and committed; Phase 5 ready to plan
+Stopped at: Phase 5 complete and committed; Phase 6 ready to plan
 Resume file: None

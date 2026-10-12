@@ -7,6 +7,13 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
+# Import every models module so Alembic sees the full metadata.
+import app.modules.analytics.models  # noqa: F401
+import app.modules.audit.models  # noqa: F401
+import app.modules.auth.models  # noqa: F401
+import app.modules.ingestion.models  # noqa: F401
+import app.modules.match.models  # noqa: F401
+import app.modules.tracker.models  # noqa: F401
 from alembic import context
 from app.core.config import get_settings
 from app.db.base import Base

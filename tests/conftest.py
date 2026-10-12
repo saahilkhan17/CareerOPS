@@ -1,7 +1,8 @@
 """Shared fixtures: in-process ASGI client + sqlite DB (no network, no Docker)."""
 
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Iterator
 
+import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import (
@@ -11,7 +12,11 @@ from sqlalchemy.ext.asyncio import (
 )
 from sqlalchemy.pool import StaticPool
 
+import app.modules.analytics.models  # noqa: F401  (register analytics tables)
+import app.modules.audit.models  # noqa: F401  (register audit table)
 import app.modules.auth.models  # noqa: F401  (register auth tables)
+import app.modules.ingestion.models  # noqa: F401  (register ingestion tables)
+import app.modules.match.models  # noqa: F401  (register match tables)
 import app.modules.tracker.models  # noqa: F401  (register tracker tables)
 from app.core import security
 from app.db.base import Base
@@ -21,6 +26,18 @@ from app.modules.auth import repository as auth_repo
 from app.modules.auth.models import User
 
 PASSWORD = "password123"
+
+
+@pytest.fixture(autouse=True)
+def _fake_redis() -> Iterator[None]:
+    """Isolate every test on a fresh in-memory Redis (no server needed)."""
+    from fakeredis.aioredis import FakeRedis
+
+    from app.core import redis_client
+
+    redis_client.set_redis_client(FakeRedis(decode_responses=True))
+    yield
+    redis_client.set_redis_client(None)
 
 
 @pytest_asyncio.fixture

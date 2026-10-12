@@ -84,10 +84,11 @@ Plans:
   1. All five analytics endpoints return correct SQL-computed results with tests
   2. Cache behavior tested; EXPLAIN ANALYZE before/after recorded with real numbers
   3. Rate limiting, API keys, audit log, and benchmark script (docs/PERFORMANCE.md) done; coverage ≥80%
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD at plan time
+- [x] 05-01: Analytics + cache (built 2026-10-12: 5 SQL endpoints, summary table, Redis cache)
+- [x] 05-02: Hardening (built 2026-10-12: rate limits, audit log, 422 cleanup, bench+PERFORMANCE)
 
 ### Phase 6: Polish + Demo (PRD Phase 5)
 **Goal**: A reviewer can try everything locally in minutes and see a portfolio-ready README.
@@ -113,5 +114,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 2. Auth + Tracker | 2/2 | Complete | 2026-10-12 |
 | 3. JD Match Scoring | 2/2 | Complete | 2026-10-12 |
 | 4. Ingestion Workers | 2/2 | Complete | 2026-10-12 |
-| 5. Analytics + Hardening | 0/TBD | Not started | - |
+| 5. Analytics + Hardening | 2/2 | Complete | 2026-10-12 |
 | 6. Polish + Demo | 0/TBD | Not started | - |

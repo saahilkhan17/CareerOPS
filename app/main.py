@@ -3,6 +3,7 @@
 import logging
 
 from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from starlette.exceptions import HTTPException as StarletteHTTPException
@@ -10,7 +11,9 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.config import get_settings
 from app.core.logging import configure_logging
 from app.core.middleware import REQUEST_ID_HEADER, RequestIdMiddleware
+from app.core.rate_limit import RateLimitMiddleware
 from app.db.session import get_engine
+from app.modules.analytics.router import router as analytics_router
 from app.modules.auth.router import router as auth_router
 from app.modules.ingestion.router import router as ingestion_router
 from app.modules.match.router import router as match_router
@@ -39,11 +42,14 @@ def create_app() -> FastAPI:
     configure_logging(settings.log_level)
 
     app = FastAPI(title=settings.app_name)
+    # Added first = innermost: RequestId (added second) wraps every response.
+    app.add_middleware(RateLimitMiddleware)
     app.add_middleware(RequestIdMiddleware)
     app.include_router(auth_router)
     app.include_router(tracker_router)
     app.include_router(match_router)
     app.include_router(ingestion_router)
+    app.include_router(analytics_router)
 
     @app.get("/health")
     async def health() -> dict[str, str]:
@@ -70,6 +76,29 @@ def create_app() -> FastAPI:
         return JSONResponse(
             status_code=exc.status_code,
             content=error_body(code, message),
+            headers={REQUEST_ID_HEADER: getattr(request.state, "request_id", "-")},
+        )
+
+    @app.exception_handler(RequestValidationError)
+    async def validation_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+        details = [
+            {
+                "loc": [str(part) for part in error.get("loc", ())],
+                "msg": str(error.get("msg", "")),
+                "type": str(error.get("type", "")),
+            }
+            for error in exc.errors()
+        ]
+        body: dict[str, object] = {
+            "error": {
+                "code": "validation_error",
+                "message": "request validation failed",
+                "details": details,
+            }
+        }
+        return JSONResponse(
+            status_code=422,
+            content=body,
             headers={REQUEST_ID_HEADER: getattr(request.state, "request_id", "-")},
         )
 

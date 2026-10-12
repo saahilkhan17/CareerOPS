@@ -201,6 +201,7 @@ def test_celery_wiring_without_broker() -> None:
         "ingest-lever-daily",
         "ingest-remoteok-daily",
         "auto-match-nightly",
+        "refresh-analytics-weekly",
     }
     assert schedule["ingest-greenhouse-daily"]["args"] == ("greenhouse",)
     assert schedule["auto-match-nightly"]["task"] == "auto_match"

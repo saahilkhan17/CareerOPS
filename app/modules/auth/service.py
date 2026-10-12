@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core import security
 from app.core.config import get_settings
 from app.core.time import utcnow
+from app.modules.audit import repository as audit_repository
 from app.modules.auth import repository
 from app.modules.auth.models import ApiKey, User
 
@@ -45,6 +46,7 @@ async def register(session: AsyncSession, email: str, password: str) -> User:
     if await repository.get_user_by_email(session, lowered) is not None:
         raise EmailTakenError(lowered)
     user = await repository.create_user(session, lowered, security.hash_password(password))
+    await audit_repository.log(session, user.id, "auth.register", "user", user.id)
     try:
         await session.commit()
     except IntegrityError:
@@ -73,6 +75,7 @@ async def issue_token_pair(session: AsyncSession, user: User) -> tuple[str, str]
         security.sha256_hex(refresh),
         utcnow() + security.REFRESH_TOKEN_TTL,
     )
+    await audit_repository.log(session, user.id, "auth.login", "user", user.id)
     await session.commit()
     return access, refresh
 
@@ -102,6 +105,7 @@ async def rotate_refresh(session: AsyncSession, refresh_token: str) -> tuple[Use
         security.sha256_hex(new_refresh),
         utcnow() + security.REFRESH_TOKEN_TTL,
     )
+    await audit_repository.log(session, user.id, "auth.refresh", "user", user.id)
     await session.commit()
     return user, access, new_refresh
 
@@ -112,6 +116,7 @@ async def logout(session: AsyncSession, refresh_token: str) -> None:
     if row is None or row.revoked_at is not None:
         return
     await repository.revoke_refresh_token(session, row)
+    await audit_repository.log(session, row.user_id, "auth.logout", "user", row.user_id)
     await session.commit()
 
 
@@ -119,6 +124,7 @@ async def create_api_key(session: AsyncSession, user: User, name: str) -> tuple[
     """Create an API key; return (row, plaintext key shown exactly once)."""
     key = security.mint_api_key()
     row = await repository.create_api_key(session, user.id, security.sha256_hex(key), name)
+    await audit_repository.log(session, user.id, "auth.api_key.create", "api_key", row.id)
     await session.commit()
     return row, key
 
@@ -134,6 +140,7 @@ async def revoke_api_key(session: AsyncSession, user: User, key_id: uuid.UUID) -
     if row is None or row.revoked_at is not None:
         return False
     row.revoked_at = utcnow()
+    await audit_repository.log(session, user.id, "auth.api_key.revoke", "api_key", row.id)
     await session.commit()
     return True
 

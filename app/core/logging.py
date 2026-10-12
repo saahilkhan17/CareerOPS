@@ -9,6 +9,9 @@ from typing import Any
 
 request_id_var: ContextVar[str] = ContextVar("request_id", default="-")
 
+# Structured fields passed via logger extra={...} (middleware, workers).
+EXTRA_FIELDS = ("duration_ms", "task_name", "task_id", "state")
+
 
 class JsonFormatter(logging.Formatter):
     """Format log records as single-line JSON, always including request_id."""
@@ -21,6 +24,10 @@ class JsonFormatter(logging.Formatter):
             "message": record.getMessage(),
             "request_id": request_id_var.get(),
         }
+        for field in EXTRA_FIELDS:
+            value = getattr(record, field, None)
+            if value is not None:
+                payload[field] = value
         if record.exc_info and record.exc_info[0] is not None:
             payload["exc"] = self.formatException(record.exc_info)
         return json.dumps(payload)
