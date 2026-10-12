@@ -1,0 +1,10 @@
+{
+  "permission": {
+    "read": {
+      "C:/Users/saahi/Desktop/CareerOPS/.opencode/get-shit-done/*": "allow"
+    },
+    "external_directory": {
+      "C:/Users/saahi/Desktop/CareerOPS/.opencode/get-shit-done/*": "allow"
+    }
+  }
+}

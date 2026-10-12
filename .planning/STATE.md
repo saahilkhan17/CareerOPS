@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-10-12)
 
 **Core value:** Reliable application tracking plus a trustworthy, explainable JD match score.
-**Current focus:** Phase 1: Bootstrap (ready to plan)
+**Current focus:** Phase 2: Auth + Tracker (ready to plan)
 
 ## Current Position
 
-Phase: 1 of 6 (Bootstrap)
+Phase: 2 of 6 (Auth + Tracker)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-10-12 — ingest-docs bootstrap (3 docs, 0 blockers)
+Last activity: 2026-10-12 — Phase 1 built+verified (6 tests, 88.7% cov, ruff+mypy clean)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 8%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
+- Total plans completed: 1
 - Average duration: -
 - Total execution time: -
 
@@ -44,6 +44,8 @@ Recent decisions affecting current work:
 
 - [Ingest]: Folder-local GSD install; global install removed
 - [Ingest]: Inline classification/synthesis (subagent model unavailable)
+- [Phase 1]: Stdlib JSON logging; lint scoped to app/tests/alembic; setuptools
+  packages.find restricted to app* (flat-layout discovery fix)
 
 ### Pending Todos
 
@@ -66,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-12
-Stopped at: Ingest-docs bootstrap complete, planning docs written
+Stopped at: Phase 1 complete and committed; Phase 2 ready to plan
 Resume file: None

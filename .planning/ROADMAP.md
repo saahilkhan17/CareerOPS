@@ -27,10 +27,10 @@ the per-phase definition of done (code + tests + migration + README + DECISIONS 
   2. Request-ID JSON logging visible on every request
   3. Async SQLAlchemy + Alembic initialized; config from env with .env.example
   4. Health-check test passes; lint clean
-**Plans**: TBD (`/gsd-plan-phase 1` to break down)
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: TBD at plan time
+- [x] 01-01: Bootstrap skeleton (built 2026-10-12: 6 tests, 88.7% cov, lint+mypy clean)
 
 ### Phase 2: Auth + Tracker (PRD Phase 1)
 **Goal**: Users manage applications end to end with a guarded status history no other user can see.
@@ -106,7 +106,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Bootstrap | 0/TBD | Not started | - |
+| 1. Bootstrap | 1/1 | Complete | 2026-10-12 |
 | 2. Auth + Tracker | 0/TBD | Not started | - |
 | 3. JD Match Scoring | 0/TBD | Not started | - |
 | 4. Ingestion Workers | 0/TBD | Not started | - |
