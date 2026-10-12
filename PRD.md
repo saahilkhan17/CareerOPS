@@ -2,7 +2,7 @@
 
 **Version 1.0 · Status: Draft for build**
 
-> **For the AI coding agent:** This file is the source of truth for what to build. Read it together with `AGENTS.md` before starting any phase. Requirement IDs (AUTH-1, TRK-2, MAT-4, ING-5, ANA-6, PLT-3, etc.) are referenced in prompts. Build only the phase you are asked to build. Plan first, then code, then test.
+> **How to read this doc:** This file is the source of truth for what gets built. Read it together with `AGENTS.md` before starting any phase. Requirement IDs (AUTH-1, TRK-2, MAT-4, ING-5, ANA-6, PLT-3, etc.) pin scope. Build one phase at a time: plan first, then code, then test.
 
 ## 1. Overview
 
@@ -235,7 +235,7 @@ These are targets to be verified by measurement, not claims.
 | Scope creep delays completion | Unfinished flagship | Strict phase boundaries, docs/BACKLOG.md for new ideas |
 | LLM output is inconsistent | Untrustworthy results | Keep LLM optional and separate from the numeric score |
 | Salary data is sparse | Weak salary analytics | Report sample sizes and show results only above a minimum count |
-| AI coding agent drifts from design | Messy codebase | AGENTS.md rules, plan-first workflow, review every diff |
+| Implementation drifts from design | Messy codebase | AGENTS.md rules, plan-first workflow, review every diff |
 
 ## 14. Timeline (Estimate)
 
