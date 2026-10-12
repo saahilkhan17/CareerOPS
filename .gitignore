@@ -1,0 +1,11 @@
+# Local-only
+.planning/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Env / secrets
+.env
